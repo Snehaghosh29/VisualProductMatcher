@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* 🌈 Define core theme colors and fonts */
+:root {
+  --color-primary: #1E3A8A;
+  --color-secondary: #3B82F6;
+  --color-bg: #F9FAFB;
+  --color-card: #FFFFFF;
+  --color-text: #111827;
+  --color-accent: #2563EB;
+}
+
+
+/* 🌙 Dark mode palette */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #e5e7eb;
+    --color-primary: #3b82f6;
+    --color-secondary: #a855f7;
+    --color-accent: #fb923c;
+    --color-muted: #1f2937;
+  }
+}
+
+/* 🎨 Tailwind theme mapping */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-muted: var(--color-muted);
+  --font-sans: var(--font-sans);
+}
+
+/* 🧍 Body setup */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ✨ Utility for card styling */
+.card {
+  background: var(--color-muted);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
