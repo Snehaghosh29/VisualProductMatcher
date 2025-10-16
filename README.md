@@ -8,6 +8,16 @@ Users can upload an image or paste a URL to find similar items filtered by **bra
 
 ---
 
+## 🌐 Frontend Preview
+
+### 🖼️ Home Page  
+![Frontend Home](images/frontend.jpg)
+
+### 🔍 Search Page  
+![Frontend Search](images/frontend-search.jpg)
+
+---
+
 ##  Tech Stack
 
 - **Frontend:** Next.js 15, React 19, Tailwind CSS  
