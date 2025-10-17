@@ -73,20 +73,22 @@ VisualProductMatcher/
 
 ---
 
+#
+---
+
 ##  Setup Instructions
 
-###  Backend (Flask)
+###  Backend (Flask) Frontend(next.js)
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 
 
-### Frontend(next.js)
-```bash
 cd frontend
 npm install
 npm run dev
+
 
 Then open:
  http://localhost:3000
