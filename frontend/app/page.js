@@ -19,16 +19,21 @@ export default function HomePage() {
   const searchRef = useRef(null);
   const { scrollY } = useScroll();
 
+  // 🌍 Dynamic backend URL (works locally + production)
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000";
+
   // 🎥 Parallax background motion
   const yPos = useTransform(scrollY, [0, 500], [0, 200]);
 
+  // 🧩 Load filter data from backend
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/filters")
+    fetch(`${API_BASE}/filters`)
       .then((res) => res.json())
       .then((data) => setFilterOptions(data))
       .catch(() => console.error("Failed to load filters"));
-  }, []);
+  }, [API_BASE]);
 
+  // 📸 Handle local file upload + preview
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -38,6 +43,7 @@ export default function HomePage() {
     }
   };
 
+  // 🔍 Handle Search (Unified for Upload + URL)
   const handleSearch = async () => {
     if (!imageUrl && !imageFile) {
       alert("Please upload an image or enter a valid URL");
@@ -54,14 +60,16 @@ export default function HomePage() {
         if (val) formData.append(key, val);
       });
 
-      const res = await fetch("http://127.0.0.1:5000/match", {
+      const res = await fetch(`${API_BASE}/match`, {
         method: "POST",
         body: formData,
       });
+
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error);
+      if (!res.ok) throw new Error(data.error || "Request failed");
       setResults(data.results || []);
+      if (data.message) console.log(data.message);
     } catch (err) {
       alert("❌ Error: " + err.message);
     } finally {
@@ -91,7 +99,7 @@ export default function HomePage() {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-0"></div>
 
-        {/* ✨ Shimmer overlay (soft moving light) */}
+        {/* ✨ Shimmer overlay */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent z-10"
           animate={{
@@ -130,7 +138,7 @@ export default function HomePage() {
           </motion.button>
         </motion.div>
 
-        {/* Floating animations */}
+        {/* Floating icons */}
         <motion.div
           className="absolute top-10 left-10 text-white/30 text-6xl"
           animate={{ y: [0, -15, 0] }}
@@ -279,7 +287,7 @@ export default function HomePage() {
           transition={{ duration: 1 }}
         >
           © 2025 <span className="font-semibold">Visual Product Matcher</span> |
-          Built by Sneha Ghosh 
+          Built by Sneha Ghosh
         </motion.div>
       </footer>
     </div>

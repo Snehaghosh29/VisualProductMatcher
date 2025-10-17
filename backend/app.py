@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 from flask_cors import CORS
 from pymongo import MongoClient
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
