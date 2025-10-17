@@ -8,12 +8,19 @@ Users can upload an image or paste a URL to find similar items filtered by **bra
 
 ---
 
-## 🌐 Frontend Preview
+##  **Live Links**
 
-### 🖼️ Home Page  
+-  **Frontend (Vercel):** [https://visual-product-matcher-swart.vercel.app/](https://visual-product-matcher-swart.vercel.app/)
+-  **Backend (Railway):** [https://web-production-90884.up.railway.app/](https://web-production-90884.up.railway.app/)
+
+---
+
+##  Frontend Preview
+
+###  Home  
 ![Frontend Home](images/frontend.jpg)
 
-### 🔍 Search Page  
+###  Search 
 ![Frontend Search](images/frontend-search.jpg)
 
 ---
@@ -81,12 +88,8 @@ cd frontend
 npm install
 npm run dev
 
-----
-
-## Link
-Flask API runs on http://127.0.0.1:5000
-
-Frontend runs on http://localhost:3000
+Then open:
+ http://localhost:3000
 
 ## Author
 
